@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studyTin</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom warna menggunakan style Tailwind -->
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --text: #edf7f2;
+          --primary: #a1d3bb;
+          --background: #08120e;
+          --secondary: #33586d;
+          --accent: #7086bc;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-[var(--background)]">
+    <!--navbar-->
+
+    <header
+      class="fixed top-0 w-full z-50 bg-[var(--background)] border-b-2 border-white shadow-md"
+    >
+      <nav class="flex justify-between items-center h-14 px-4">
+        <div class="text-xl font-bold text-[var(--text)]">studyTin</div>
+        <button
+          id="hamburger"
+          class="sm:hidden flex flex-col justify-between w-7 h-5 z-50"
+        >
+          <span
+            id="bar1"
+            class="block h-1 w-full bg-[var(--text)] rounded transition-all duration-300 ease-in-out"
+          ></span>
+          <span
+            id="bar2"
+            class="block h-1 w-full bg-[var(--text)] rounded transition-all duration-300 ease-in-out"
+          ></span>
+          <span
+            id="bar3"
+            class="block h-1 w-full bg-[var(--text)] rounded transition-all duration-300 ease-in-out"
+          ></span>
+        </button>
+        <nav class="hidden sm:flex text-[var(--text)] space-x-6">
+          <a
+            href="#home"
+            class="hover:text-[var(--primary)] sm:text-xl px-3 py-2"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="hover:text-[var(--primary)] sm:text-xl px-3 py-2"
+            >About</a
+          >
+          <a
+            href="#support"
+            class="hover:text-[var(--primary)] sm:text-xl px-3 py-2"
+            >Support</a
+          >
+          <a
+            id="loginBtn"
+            href="/login.html"
+            class="bg-slate-400 text-[var(--background)] hover:bg-[var(--secondary)] hover:text-[var(--primary)] sm:text-xl px-5 py-1 rounded-3xl duration-300 ease-in-out transition"
+            >Login</a
+          >
+          <!-- Tombol Profil Pengganti Login -->
+          <div
+            id="profileToggle"
+            class="hidden cursor-pointer text-[var(--text)] sm:text-xl px-3 py-2 rounded-3xl hover:bg-[var(--accent)] transition"
+          >
+            <!-- Isi nanti via JS -->
+          </div>
+        </nav>
+      </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside
+      id="sideBar"
+      class="fixed top-0 right-[-100%] h-screen w-52 z-40 bg-[var(--secondary)]/50 shadow-lg backdrop-blur-md transition-all duration-300 flex flex-col items-start px-4 pt-16 space-y-4 sm:hidden"
+    >
+      <a
+        href="#home"
+        class="w-full px-3 py-2 text-lg text-[var(--text)] active:opacity-75 hover:bg-[var(--accent)] hover:text-[var(--background)] rounded-full transition"
+        >Home</a
+      >
+      <a
+        href="#about"
+        class="w-full px-3 py-2 text-lg text-[var(--text)] active:opacity-75 hover:bg-[var(--accent)] hover:text-[var(--background)] rounded-full transition"
+        >About</a
+      >
+      <a
+        href="#support"
+        class="w-full px-3 py-2 text-lg text-[var(--text)] active:opacity-75 hover:bg-[var(--accent)] hover:text-[var(--background)] rounded-full transition"
+        >Support</a
+      >
+      <div
+        id="profileToggleMobile"
+        class="hidden w-full px-3 py-2 text-lg text-[var(--text)] rounded-full cursor-pointer hover:bg-[var(--accent)] hover:text-[var(--background)] transition"
+      >
+        <!-- Nama user akan diisi via JS -->
+      </div>
+      <a
+        id="loginBtnSidebar"
+        href="/login.html"
+        class="w-full px-3 py-2 text-lg text-[var(--text)] active:opacity-75 hover:bg-[var(--accent)] hover:text-[var(--background)] rounded-full transition"
+        >Login</a
+      >
+    </aside>
+
+    <!-- Landing Page -->
+    <main class="">
+      <section
+        data-scroll
+        id="home"
+        class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden px-4 bg-[url('/assets/background.jpg')] bg-cover bg-center text-[var(--text)]"
+      >
+        <!-- GRADIENT OVERLAY -->
+        <div
+          class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-[var(--background)] z-0"
+        ></div>
+
+        <!-- Konten -->
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+          <h1 class="text-4xl sm:text-6xl flex justify-center tracking-widest">
+            POMODORO
+          </h1>
+
+          <div
+            class="flex justify-center text-center mx-auto pt-8 sm:max-w-md max-w-sm"
+          >
+            <button
+              id="longWork"
+              class="active:opacity-75 active:translate-y-1 bg-[var(--primary)] text-[var(--background)] w-full text-center hover:translate-y-1 text-sm md:text-lg font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] cursor-pointer transition duration-150"
+            >
+              long work
+            </button>
+            <button
+              id="work"
+              class="active:opacity-75 active:translate-y-1 bg-[var(--primary)] text-[var(--background)] w-full text-center hover:translate-y-1 text-sm md:text-lg font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] cursor-pointer transition duration-150"
+            >
+              work
+            </button>
+            <button
+              id="break"
+              class="active:opacity-75 active:translate-y-1 bg-[var(--primary)] text-[var(--background)] w-full text-center py-1 hover:translate-y-1 text-sm font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] cursor-pointer transition duration-150"
+            >
+              break
+            </button>
+            <button
+              id="longBreak"
+              class="active:opacity-75 active:translate-y-1 bg-[var(--primary)] text-[var(--background)] w-full text-center py-1 hover:translate-y-1 text-sm font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] cursor-pointer transition duration-150"
+            >
+              long break
+            </button>
+          </div>
+
+          <div class="text-7xl md:text-8xl text-center py-8 text-[var(--text)]">
+            <h1 id="timerDisplay">25.00</h1>
+          </div>
+
+          <div class="flex justify-center items-center">
+            <button
+              id="start-btn"
+              class="active:translate-y-1 active:opacity-70 bg-[var(--primary)] text-[var(--background)] w-24 mx-2 rounded-lg text-center py-3 text-xl shadow-2xl font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] transition duration-150 cursor-pointer"
+            >
+              start
+            </button>
+            <button
+              id="stop-btn"
+              class="active:translate-y-1 active:opacity-70 bg-[var(--primary)] text-[var(--background)] w-24 mx-2 rounded-lg text-center py-3 text-xl shadow-2xl font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] transition duration-150 cursor-pointer"
+            >
+              stop
+            </button>
+            <button
+              id="reset-btn"
+              class="active:translate-y-1 active:opacity-70 bg-[var(--primary)] text-[var(--background)] w-24 mx-2 rounded-lg text-center py-3 text-xl shadow-2xl font-semibold hover:bg-[var(--accent)] hover:text-[var(--text)] transition duration-150 cursor-pointer"
+            >
+              reset
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popup Profil -->
+      <div
+        id="profilePopup"
+        class="hidden fixed top-20 right-5 w-72 bg-[var(--primary)] text-[var(--background)] rounded-xl shadow-lg z-10 p-6 space-y-3"
+      >
+        <h2 class="text-xl font-bold" id="profileName">user name</h2>
+        <p id="profileEmail">email@example.com</p>
+        <p>
+          <span class="font-semibold">study minute:</span>
+          <span id="profileTotalMinutes">0</span> minute
+        </p>
+        <p>
+          <span class="font-semibold">study minute this session: </span>
+          <span id="profileSessionMinutes">0</span> minute
+        </p>
+        <button
+          id="logoutBtn"
+          class="w-full mt-4 bg-[var(--secondary)] text-[var(--text)] py-2 rounded hover:bg-[var(--accent)] transition"
+        >
+          Logout
+        </button>
+      </div>
+
+      <!--pop up-->
+      <audio id="alarmSound" src="./assets/alarm.mp3"></audio>
+      <div
+        id="popup"
+        class="hidden fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] py-[70px] px-[100px] sm:py-[100px] sm:px-[200px] bg-gradient-to-b from-[var(--secondary)] to-[var(--primary)]/70 z-10 rounded-xl backdrop-blur-md focus:outline-none"
+      >
+        <div class="flex flex-col text-center justify-center w-max">
+          <h2 class="text-md mb-7 sm:text-2xl">Time's Up!</h2>
+          <button
+            id="closePopup"
+            class="px-4 py-2 bg-[var(--primary)] rounded-xl transition ease-in-out duration-200 hover:bg-[var(--secondary)] hover:text-[var(--text)] active:opacity-70 active:duration-100 curs or-pointer text-md"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!--section about-->
+      <section
+        class="sm:mx-16 px-6 py-20 bg-[var(--background)] text-[var(--text)] space-y-16 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-16"
+      >
+        <!-- Quote 1 - kiri -->
+        <div data-scroll class="max-w-3xl mx-auto text-left">
+          <p class="text-lg sm:text-xl lg:text-2xl italic leading-relaxed">
+            “Study 25 minutes gets me more than just two hours without
+            Pomodoro.”
+          </p>
+          <p class="mt-2 text-sm text-[var(--primary)] font-semibold">
+            — a focused mind
+          </p>
+        </div>
+
+        <!-- Quote 2 - kanan -->
+        <div data-scroll class="max-w-3xl mx-auto text-right">
+          <p class="text-lg sm:text-xl lg:text-2xl italic leading-relaxed">
+            “One simple timer helped me break the cycle of procrastination.”
+          </p>
+          <p class="mt-2 text-sm text-[var(--primary)] font-semibold">
+            — daily achiever
+          </p>
+        </div>
+
+        <!-- Quote 3 - tengah -->
+        <div
+          data-scroll
+          class="max-w-3xl mx-auto text-left md:text-center lg:col-span-2 lg:pt-8"
+        >
+          <p class="text-lg sm:text-xl lg:text-2xl italic leading-relaxed">
+            “Thanks to Pomodoro, I finish faster, and rest with peace of mind.”
+          </p>
+          <p class="mt-2 text-sm text-[var(--primary)] font-semibold">
+            — time warrior
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="py-20 px-4 bg-transparent text-[var(--text)]">
+        <div
+          class="bg-[var(--primary)] text-[var(--background)] rounded-2xl shadow-md max-w-3xl mx-auto px-6 py-12 space-y-10"
+        >
+          <!-- What is Pomodoro -->
+          <div class="text-left">
+            <h2 data-scroll class="text-2xl sm:text-3xl font-bold mb-4">
+              What is the Pomodoro Technique?
+            </h2>
+            <p data-scroll class="text-base sm:text-lg leading-relaxed">
+              The Pomodoro Technique is a
+              <span class="text-[var(--secondary)] font-semibold"
+                >time management</span
+              >
+              method that breaks work into focused 25-minute sessions, followed
+              by short breaks. It's a simple yet powerful way to stay
+              <span class="text-[var(--secondary)] font-semibold"
+                >productive, reduce burnout, and make every minute count.</span
+              >
+            </p>
+          </div>
+
+          <!-- Why studyTin -->
+          <div class="text-left">
+            <h3 data-scroll class="text-xl sm:text-2xl font-semibold mb-4">
+              Why did we build studyTin?
+            </h3>
+            <p data-scroll class="text-base sm:text-lg leading-relaxed">
+              studyTin was born out of the struggle to stay focused in a noisy
+              world. We wanted something
+              <span class="text-[var(--secondary)] font-semibold"
+                >clean, simple, and distraction-free</span
+              >
+              — a timer that gets out of your way and helps you do the work that
+              matters. Whether you're studying, coding, or creating, studyTin
+              helps you find your flow.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        data-scroll
+        id="support"
+        class="py-30 px-6 bg-[var(--background)] text-[var(--text)] text-center space-y-8"
+      >
+        <h2 class="text-2xl sm:text-3xl font-bold">Support studyTin</h2>
+        <p class="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          If you find studyTin helpful, consider sharing it with friends or
+          supporting the project. Every bit of encouragement keeps this tool
+          alive and improving!
+        </p>
+
+        <!-- Tombol Donasi -->
+        <div data-scroll class="flex justify-center space-x-4">
+          <a
+            href="https://trakteer.id/your-link"
+            target="_blank"
+            class="bg-[var(--primary)] hover:bg-[var(--accent)] text-[var(--background)] hover:text-[var(--text)] px-6 py-2 rounded-full font-semibold transition"
+          >
+            ☕ Trakteer
+          </a>
+          <a
+            href="https://ko-fi.com/your-link"
+            target="_blank"
+            class="bg-[var(--primary)] hover:bg-[var(--accent)] text-[var(--background)] hover:text-[var(--text)] px-6 py-2 rounded-full font-semibold transition"
+          >
+            💖 Ko-fi
+          </a>
+        </div>
+      </section>
+
+      <section
+        class="py-20 px-6 bg-gradient-to-t from-[var(--secondary)] to-[var(--background)] from-20% text-[var(--text)] text-center"
+      >
+        <h2 data-scroll class="text-2xl sm:text-3xl font-bold mb-12">
+          Why studyTin?
+        </h2>
+        <div class="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div
+            data-scroll
+            class="bg-[var(--primary)] text-[var(--background)] rounded-xl px-6 py-10 shadow-md space-y-4"
+          >
+            <div class="text-4xl">✨</div>
+            <h3 class="text-xl font-semibold">Minimalist</h3>
+            <p class="text-sm leading-relaxed">
+              Clean, focused interface with no distractions.
+            </p>
+          </div>
+
+          <div
+            data-scroll
+            class="bg-[var(--primary)] text-[var(--background)] rounded-xl px-6 py-10 shadow-md space-y-4"
+          >
+            <div class="text-4xl">🎯</div>
+            <h3 class="text-xl font-semibold">Productive</h3>
+            <p class="text-sm leading-relaxed">
+              Break big tasks into focused sessions to avoid burnout.
+            </p>
+          </div>
+
+          <div
+            data-scroll
+            class="bg-[var(--primary)] text-[var(--background)] rounded-xl px-6 py-10 shadow-md space-y-4"
+          >
+            <div class="text-4xl">📱</div>
+            <h3 class="text-xl font-semibold">Mobile Friendly</h3>
+            <p class="text-sm leading-relaxed">
+              Responsive layout that works great on all devices.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-t border-2 border-[var(--accent)]" />
+
+      <footer
+        class="bg-[var(--background)] text-[var(--text)] py-10 text-center text-sm border-t border-white/10"
+      >
+        <p>
+          &copy; 2025 Dustin Nathaniel Bernadi. All rights reserved. ·
+          <a
+            href="https://github.com/dustinbern"
+            target="_blank"
+            class="text-[var(--accent)] hover:underline"
+          >
+            GitHub
+          </a>
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

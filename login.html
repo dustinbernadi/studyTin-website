@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studyTIn login page</title>
+
+    <!--tailwind cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom warna menggunakan style Tailwind -->
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --text: #edf7f2;
+          --primary: #a1d3bb;
+          --background: #08120e;
+          --secondary: #33586d;
+          --accent: #7086bc;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div
+        class="flex items-center justify-center min-h-screen bg-[var(--background)]"
+      >
+        <div
+          class="bg-[var(--primary)] p-8 rounded-lg shadow-[0_0_20px_var(--accent)] w-full max-w-md mx-4"
+        >
+          <h1 class="text-2xl font-bold text-text mb-6">Login to studyTIn</h1>
+          <form id="loginForm">
+            <div class="mb-4">
+              <label for="email" class="block text-[var(--background)] mb-2"
+                >email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full p-2 border border-accent rounded focus:outline-none focus:ring-2 focus:ring-primary text-base bg-white/80 text-[var(--background)]"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="password" class="block text-[var(--background)] mb-2"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                class="w-full p-2 border border-accent rounded focus:outline-none focus:ring-2 focus:ring-primary text-base bg-white/80 text-[var(--background)]"
+              />
+            </div>
+            <div class="flex items-center justify-between mb-6">
+              <p class="text-text">Don't have an account?</p>
+              <a
+                href="/register.html"
+                class="text-[var(--secondary)] hover:underline"
+                >Register here</a
+              >
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-[var(--secondary)] text-[var(--text)] font-bold py-2 rounded hover:text-[var(--background)] tracking-wider hover:bg-[var(--accent)] transition duration-300"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./js/login.js"></script>
+  </body>
+</html>
