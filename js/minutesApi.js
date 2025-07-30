@@ -5,7 +5,7 @@ export async function updateMinutesToServer(notYetUploaded) {
     return console.warn("No token found. User might not be logged in.");
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/update-minutes", {
+    const res = await fetch("https://studytin-server-production.up.railway.app/api/auth/update-minutes", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

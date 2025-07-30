@@ -72,7 +72,7 @@ async function fetchUserProfile(token) {
   if (!token) return null; // ⬅️ Cek token dulu, kalau kosong langsung keluar
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/profile", {
+    const res = await fetch("https://studytin-server-production.up.railway.app/api/auth/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
