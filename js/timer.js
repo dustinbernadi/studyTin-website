@@ -135,36 +135,38 @@ export function resetTimer() {
   updateDisplay();
 }
 
-export function longWorkMode() {
-  state = "longWork";
-  timeLeft = 3000;
-  updateDisplay();
+function switchMode(newState, newDuration) {
+  // stop timer dulu
   clearInterval(timer);
   isRunning = false;
+
+  // ubah state & waktu
+  state = newState;
+  timeLeft = newDuration;
+
+  // reset timestamp supaya tidak bentrok
+  startTimeStamp = null;
+  endTimeStamp = null;
+
+  // tampilkan waktu baru
+  updateDisplay();
+}
+
+
+export function longWorkMode() {
+ switchMode("longWork", 3000);
 }
 
 export function workMode() {
-  state = "work";
-  timeLeft = 1500;
-  updateDisplay();
-  clearInterval(timer);
-  isRunning = false;
+  switchMode("work", 1500);
 }
 
 export function breakMode() {
-  state = "break";
-  timeLeft = 300;
-  updateDisplay();
-  clearInterval(timer);
-  isRunning = false;
+  switchMode("break", 300);
 }
 
 export function longBreakMode() {
-  state = "longBreak";
-  timeLeft = 900;
-  updateDisplay();
-  clearInterval(timer);
-  isRunning = false;
+  switchMode("longBreak", 900);
 }
 
 export function handleTimeout() {
