@@ -12,17 +12,13 @@ export async function setupAuthUI() {
   const loginBtnSidebar = document.getElementById("loginBtnSidebar");
   const mobileProfileToggle = document.getElementById("profileToggleMobile");
 
-
   const token = localStorage.getItem("token");
   const user = await fetchUserProfile(token);
   localStorage.setItem("user", JSON.stringify(user)); // optional
 
-  
-
   if (!token && !user) return;
 
   try {
-
     // 2. Sembunyikan tombol login, tampilkan nama
     if (loginButton) loginButton.style.display = "none";
     if (loginBtnSidebar) loginBtnSidebar.style.display = "none";
@@ -72,15 +68,20 @@ async function fetchUserProfile(token) {
   if (!token) return null; // ⬅️ Cek token dulu, kalau kosong langsung keluar
 
   try {
-    const res = await fetch("https://studytin-server-production.up.railway.app/api/auth/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://studytin-server-production.up.railway.app/api/auth/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-    if (!res.ok) {
+    if (res.status === 401 || res.status === 403) {
       // Kalau statusnya 403, kemungkinan token invalid/expired
-      return null;
+      localStorage.removeItem("token");
+      location.reload();
+      return;
     }
 
     return await res.json();
@@ -89,4 +90,3 @@ async function fetchUserProfile(token) {
     return null;
   }
 }
-
